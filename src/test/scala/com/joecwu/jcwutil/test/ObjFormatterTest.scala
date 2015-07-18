@@ -11,15 +11,15 @@ import com.joecwu.jcwutil.ObjFormatter._
  * Created by Joe on 2015/7/19.
  */
 class ObjFormatterTest extends FlatSpec {
-  private val SDF_RFC3399 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
+  private val SDF_RFC3339 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
   private val SDF_ISO8601 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.ENGLISH)
 
   behavior of "LongFormatter"
   it should "convert Long to Date(RFC3339) format:(yyyy-MM-dd'T'HH:mm:ss'Z')" in {
     val ts = System.currentTimeMillis()
     val date = new java.util.Date(ts)
-    SDF_RFC3399.setTimeZone(TimeZone.getTimeZone("UTC"))
-    val dateStr = SDF_RFC3399.format(date)
+    SDF_RFC3339.setTimeZone(TimeZone.getTimeZone("UTC"))
+    val dateStr = SDF_RFC3339.format(date)
     assertResult(ts.toStringRFC3339())(dateStr)
   }
   it should "convert Long to Date(ISO8601) format:(yyyy-MM-dd'T'HH:mm:ss.SSSXXX)" in {
@@ -34,8 +34,8 @@ class ObjFormatterTest extends FlatSpec {
   it should "convert Long to Date(RFC3339) format:(yyyy-MM-dd'T'HH:mm:ss'Z')" in {
     val ts = System.currentTimeMillis()
     val date = new java.util.Date(ts)
-    SDF_RFC3399.setTimeZone(TimeZone.getTimeZone("UTC"))
-    val dateStr = SDF_RFC3399.format(date)
+    SDF_RFC3339.setTimeZone(TimeZone.getTimeZone("UTC"))
+    val dateStr = SDF_RFC3339.format(date)
     assertResult(date.toStringRFC3339())(dateStr)
   }
   it should "convert Long to Date(ISO8601) format:(yyyy-MM-dd'T'HH:mm:ss.SSSXXX)" in {
